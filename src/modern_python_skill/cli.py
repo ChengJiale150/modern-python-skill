@@ -107,7 +107,7 @@ def add(name: str, path: str) -> None:
     to <path>/skill/modern-python-skill and recording it in config.yaml.
     """
     target_root = Path(path).resolve()
-    target_skill_dir = target_root / "skill" / "modern-python-skill"
+    target_skill_dir = target_root / "modern-python-skill"
 
     if not SKILL_DIR.exists():
         console.print(
