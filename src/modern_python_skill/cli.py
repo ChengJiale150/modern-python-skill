@@ -1,3 +1,4 @@
+import contextlib
 import importlib.resources
 import shutil
 import tempfile
@@ -87,7 +88,7 @@ def init() -> None:
     except Exception as e:
         console.print(f"[red]Error copying skills:[/red] {e}")
         # If importlib fails, try local fallback directly
-        try:
+        with contextlib.suppress(Exception):
             src_skill_path = Path(__file__).parent / "skill"
             if src_skill_path.exists():
                 if SKILL_DIR.exists():
@@ -95,8 +96,6 @@ def init() -> None:
                 shutil.copytree(src_skill_path, SKILL_DIR)
                 console.print(f"[green]Copied skills to {SKILL_DIR} (fallback)[/green]")
                 return
-        except Exception:
-            pass
         raise typer.Exit(code=1) from e
 
 
