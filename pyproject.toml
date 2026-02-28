@@ -4,14 +4,15 @@ dynamic = ["version"]
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Cheng Jiale", email = "chengjiale150@gmail.com" },
+]
 dependencies = [
     "gitpython>=3.1.46",
     "pyyaml>=6.0.3",
     "rich>=14.3.3",
     "typer>=0.24.1",
-]
-authors = [
-    { name = "Cheng Jiale", email = "chengjiale150@gmail.com" },
 ]
 
 [project.scripts]
@@ -24,6 +25,7 @@ dev = [
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
     "ruff>=0.15.4",
+    "types-pyyaml>=6.0.12.20250915",
 ]
 
 [build-system]
@@ -39,13 +41,8 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = [
-    "E",   # pycodestyle errors
-    "W",   # pycodestyle warnings
-    "F",   # pyflakes
-    "I",   # isort
-    "C",   # flake8-comprehensions
-    "B",   # flake8-bugbear
-    "UP",  # pyupgrade
+    "E", "F", "W", "I", "N",
+    "UP", "B", "C", "ARG", "PTH", "SIM"
 ]
 ignore = ["E501"]
 

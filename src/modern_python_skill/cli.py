@@ -24,7 +24,7 @@ def load_config() -> dict[str, Any]:
     if not CONFIG_FILE.exists():
         return {"source_url": DEFAULT_SOURCE_URL, "projects": {}}
     try:
-        with open(CONFIG_FILE) as f:
+        with CONFIG_FILE.open() as f:
             return yaml.safe_load(f) or {
                 "source_url": DEFAULT_SOURCE_URL,
                 "projects": {},
@@ -37,7 +37,7 @@ def load_config() -> dict[str, Any]:
 def save_config(config: dict[str, Any]) -> None:
     """Save configuration to the config file."""
     CONFIG_DIR.mkdir(parents=True, exist_ok=True)
-    with open(CONFIG_FILE, "w") as f:
+    with CONFIG_FILE.open("w") as f:
         yaml.dump(config, f)
 
 
