@@ -5,11 +5,17 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.134.0",
+    "gitpython>=3.1.46",
+    "pyyaml>=6.0.3",
+    "rich>=14.3.3",
+    "typer>=0.24.1",
+]
+authors = [
+    { name = "Cheng Jiale", email = "chengjiale150@gmail.com" },
 ]
 
 [project.scripts]
-modern-python-skill = "modern_python_skill:main"
+modern-python-skill = "modern_python_skill.cli:app"
 
 [dependency-groups]
 dev = [
@@ -52,16 +58,4 @@ line-ending = "auto"
 [tool.mypy]
 python_version = "3.12"
 strict = true
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_no_return = true
-warn_unreachable = true
-strict_optional = true
 plugins = []
