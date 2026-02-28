@@ -1,12 +1,13 @@
-.PHONY: help install update check format lint type-check pre-commit clean
+.PHONY: help install update check format lint type-check test pre-commit clean
 
 help:
 	@echo "Available commands:"
 	@echo "  install      - Install dependencies using uv"
-	@echo "  check        - Run all checks (format, lint, type-check)"
+	@echo "  check        - Run all checks (format, lint, type-check, test)"
 	@echo "  format       - Format code using ruff"
 	@echo "  lint         - Lint code using ruff"
 	@echo "  type-check   - Type check code using mypy"
+	@echo "  test         - Run tests using pytest"
 	@echo "  pre-commit   - Run pre-commit on all files"
 	@echo "  clean        - Remove temporary files and caches"
 
@@ -21,9 +22,12 @@ lint:
 	uv run ruff check . --fix
 
 type-check:
-	uv run mypy src
+	uv run mypy src tests
 
-check: format lint type-check
+test:
+	uv run pytest
+
+check: format lint type-check test
 
 pre-commit:
 	uv run pre-commit run --all-files

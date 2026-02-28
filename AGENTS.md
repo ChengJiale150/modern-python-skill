@@ -3,4 +3,4 @@
 - NEVER directly modify `pyproject.toml`, Add dependencies using `uv add <package-name>`, Sync Envirment using `uv sync`.
 
 ## Devlopment
-- Use `make check` to run checking before ANY commit
+- MUST Use `make check` to run checking before finish a feature or fix a bug.

@@ -46,6 +46,16 @@ select = [
 ]
 ignore = ["E501"]
 
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S101",    # assert
+    "ARG",     # Unused function argument
+    "FBT",     # Boolean trap
+    "PLR2004", # Magic value used in comparison
+    "D",       # Missing docstrings
+    "ANN",     # Missing type annotations
+]
+
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
@@ -56,3 +66,19 @@ line-ending = "auto"
 python_version = "3.12"
 strict = true
 plugins = []
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+warn_return_any = false
+warn_unused_ignores = false
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --cov=src/modern_python_skill --cov-report=term-missing"
+testpaths = [
+    "tests",
+]
+pythonpath = ["src"]
