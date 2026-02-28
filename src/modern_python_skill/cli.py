@@ -212,7 +212,7 @@ def sync(name: str) -> None:
         raise typer.Exit(code=1)
 
     target_root = Path(config["projects"][name])
-    target_skill_dir = target_root / "skill" / "modern-python-skill"
+    target_skill_dir = target_root / "modern-python-skill"
 
     if not SKILL_DIR.exists():
         console.print(
